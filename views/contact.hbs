@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Details</title>
+   
+
+    <link rel="stylesheet" type="text/css" href="../css/contact.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/navbar.css"/>
+</head>
+<body>
+  <nav class="navbar">
+        <div class="container-nav">
+            <h1 class="logo">Your Logo</h1>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/addcontact">Add Contact</a></li>
+                <li><a href="/getContacts">Show Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Contact Details</h1>
+        <table>
+            <thead>
+                <tr>
+                   
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Actions</th> <!-- New column for action buttons -->
+                </tr>
+            </thead>
+            <tbody>
+                {{!-- add loop --}}
+
+                {{#each contacts}}
+                <tr>
+                    
+                    <td>{{this.name}}</td>
+                    <td>{{this.phone}}</td>
+                    <td>{{this.email}}</td>
+                    <td class="action-buttons">
+                        <a href="/updatecontact/{{this.id}}"><button>Update</button></a>
+                        <a href="/deletecontact/{{this.id}}"><button>Delete</button></a>
+                    </td>
+                </tr>
+                {{/each}}
+                <!-- Add more rows for additional contacts -->
+            </tbody>
+        </table>
+
+            <!-- Pagination -->
+    <div class="pagination">
+        
+
+        {{#if hasPrevPage}}
+        <a href="/getContacts?page={{prevPage}}&limit={{limit}}">Previous</a>
+        {{/if}}
+        {{#if hasNextPage}}
+        <a href="/getContacts?page={{nextPage}}&limit={{limit}}">Next</a>
+        {{/if}}
+  
+         
+        <span>Page {{pageRangeStart}} of {{ pageRangeEnd}}</span>
+        
+    </div>
+
+</div>
+    </div>
+ 
+</body>
+</html>

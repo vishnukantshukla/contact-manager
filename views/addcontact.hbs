@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Contact</title>
+    <link rel="stylesheet" type="text/css" href="../css/addcontact.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/navbar.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container-nav">
+            <h1 class="logo">Your Logo</h1>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/addcontact">Add Contact</a></li>
+                <li><a href="/getContacts">Show Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Add Contact</h1>
+        <form action="/addcontact" method="post" onsubmit="return validateForm()">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            
+            <label for="phone">Phone:</label><br>
+            <input type="text" id="phone" name="phone" required><br>
+            
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            
+            <button type="submit">Add Contact</button>
+        </form>
+    </div>
+
+    <script src="../js/addcontact.js"></script>
+    
+
+</body>
+</html>

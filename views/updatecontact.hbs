@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Contact</title>
+    <link rel="stylesheet" type="text/css" href="../css/addcontact.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/navbar.css"/>
+</head>
+<body>
+     <nav class="navbar">
+        <div class="container-nav">
+            <h1 class="logo">Your Logo</h1>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/addcontact">Add Contact</a></li>
+                <li><a href="/getContacts">Show Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Update Contact</h1>
+        <form action="/updatecontact" method="post" onsubmit="return validateForm()">
+            <label for="id">Contact ID:</label><br>
+            <input type="text" id="id" name="id" value="{{contact.id}}" required><br>
+            
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" value="{{contact.name}}" required><br>
+            
+            <label for="phone">Phone:</label><br>
+            <input type="text" id="phone" name="phone" value="{{contact.phone}}" required><br>
+            
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" value="{{contact.email}}" required><br>
+            
+            <button type="submit">Update Contact</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            var id = document.getElementById("id").value;
+            var name = document.getElementById("name").value;
+            var phone = document.getElementById("phone").value;
+            var email = document.getElementById("email").value;
+
+            if (id == "") {
+                alert("Contact ID must be filled out");
+                return false;
+            }
+
+            if (name == "") {
+                alert("Name must be filled out");
+                return false;
+            }
+
+            if (phone == "") {
+                alert("Phone must be filled out");
+                return false;
+            }
+
+            // Check if phone number has exactly 10 digits and doesn't start with 0
+            if (!/^[1-9]\d{9}$/.test(phone)) {
+                alert("Phone number must be 10 digits and cannot start with 0");
+                return false;
+            }
+
+            if (email == "") {
+                alert("Email must be filled out");
+                return false;
+            }
+
+            // Check if email is valid using regular expression
+            if (!/\S+@\S+\.\S+/.test(email)) {
+                alert("Invalid email address");
+                return false;
+            }
+
+            // Additional validation logic can be added here
+
+            return true;
+        }
+    </script>
+</body>
+</html>
